@@ -13,8 +13,8 @@ windowsmgr.max_events_per_sec = 240
 # RIL
 rild.libpath=/system/lib/libhtc_ril.so
 rild.libargs=-e wwan0
-ro.telephony.ril.v3=signalstrength,skipbrokendatacall
-ro.ril.disable.power.collapse=1
+ro.telephony.ril_class=QualcommSharedRIL
+ro.telephony.ril.v3=signalstrength
 modem.power.device=/sys/class/gpio/gpio32/value,0,1
 ro.ril.devicename=/dev/ttyACM1
 modem.powercontrol=disabled
@@ -67,7 +67,7 @@ ro.ril.devicename=/dev/ttyACM1
 wifi.interface=wlan0
 wifi.softap.interface=wlan1
 wifi.softapconcurrent.interface=wlan1
-wifi.supplicant_scan_interval=60
+wifi.supplicant_scan_interval=120
 
 init.svc.wpa_supplicant=
 init.svc.dhcpcd_wlan0=

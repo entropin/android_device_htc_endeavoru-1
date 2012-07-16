@@ -13,16 +13,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 # Skip droiddoc build to save build time
 BOARD_SKIP_ANDROID_DOC_BUILD := true
 
 # Audio
 BOARD_USES_GENERIC_AUDIO := false
-TARGET_PROVIDES_LIBAUDIO := true
-TARGET_PROVIDES_LIBLIGHTS := true
+BOARD_USES_ALSA_AUDIO := false
 
 #Camera
-BOARD_HAVE_HTC_FFC := true
 USE_CAMERA_STUB := false
 
 # Target arch settings
@@ -35,26 +34,14 @@ TARGET_ARCH_VARIANT_CPU := cortex-a9
 TARGET_CPU_SMP := true
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
-# Flags
-TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
-
 # Board nameing
 TARGET_NO_RADIOIMAGE := true
 TARGET_BOOTLOADER_BOARD_NAME := 
 TARGET_BOARD_PLATFORM := tegra
 TARGET_TEGRA_VERSION := t30
 
-# mediaplayer
-BOARD_USES_HW_MEDIAPLUGINS := false
-BOARD_USES_HW_MEDIASCANNER := false
-BOARD_USES_HW_MEDIARECORDER := false
-
 # EGL settings
-TARGET_USES_OVERLAY := true
 USE_OPENGL_RENDERER := true
-BOARD_USE_SKIA_LCDTEXT := true
-BOARD_NO_ALLOW_DEQUEUE_CURRENT_BUFFER := true
 BOARD_EGL_CFG := device/htc/endeavoru/configs/egl.cfg
 
 # Wi-Fi
@@ -67,18 +54,17 @@ BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_wl12xx
 BOARD_SOFTAP_DEVICE_TI := NL80211
 WIFI_DRIVER_MODULE_NAME	:=  "wl12xx_sdio"
 WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wl12xx_sdio.ko"
-
-# RIL
-BOARD_PROVIDES_LIBRIL := true
+COMMON_GLOBAL_CFLAGS += -DUSES_TI_MAC80211
 
 # BT
 BOARD_HAVE_BLUETOOTH := true
 
-# FM
-# BOARD_HAVE_FM_RADIO_TI := true
+# HTC ril compatability
+TARGET_PROVIDES_LIBRIL := vendor/htc/endeavoru/proprietary/lib/libhtc-ril.so
+BOARD_FORCE_RILD_AS_ROOT := true
 
-BOARD_HDMI_MIRROR_MODE := Scale
-BOARD_HAS_DIDIM := true
+# Avoid the generation of ldrcc instructions
+NEED_WORKAROUND_CORTEX_A9_745320 := true
 
 # Vold / USB
 BOARD_VOLD_MAX_PARTITIONS := 20

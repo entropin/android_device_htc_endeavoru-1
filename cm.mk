@@ -1,4 +1,4 @@
-$(call inherit-product, device/htc/endeavoru/full_endeavor.mk)
+$(call inherit-product, device/htc/endeavoru/full_endeavoru.mk)
 
 # Release name
 PRODUCT_RELEASE_NAME := endeavoru
