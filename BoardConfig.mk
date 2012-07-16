@@ -61,7 +61,6 @@ BOARD_HAVE_BLUETOOTH := true
 
 # HTC ril compatability
 TARGET_PROVIDES_LIBRIL := vendor/htc/endeavoru/proprietary/lib/libhtc-ril.so
-BOARD_FORCE_RILD_AS_ROOT := true
 
 # Avoid the generation of ldrcc instructions
 NEED_WORKAROUND_CORTEX_A9_745320 := true
